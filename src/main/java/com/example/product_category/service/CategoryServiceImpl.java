@@ -1,5 +1,7 @@
 package com.example.product_category.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +41,12 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public void deleteCategory(Long id) {
+	    Optional<Category> optional=categoryRepository.findById(id);
+	    if(optional.isPresent()) {
 		categoryRepository.deleteById(id);
+	    }
+	    else {
+	     throw new ResourceNotFoundException("Category not found with id "+id);
+	    }
 	}
-
 }

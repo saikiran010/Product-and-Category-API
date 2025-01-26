@@ -20,6 +20,7 @@ public class GlobalExceptionHandler {
 	}
     
     //global exception
+    @ExceptionHandler
     public ResponseEntity<ErrorResponse> handleException(Exception e){
     	ErrorResponse errorResponse=new ErrorResponse(HttpStatus.BAD_REQUEST.value(),e.getMessage(),LocalDateTime.now());
     	return new ResponseEntity<>(errorResponse,HttpStatus.BAD_REQUEST);

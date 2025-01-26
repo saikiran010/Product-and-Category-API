@@ -29,7 +29,7 @@ public class ProductServiceImpl implements ProductService {
 	@Override
 	public Product getProductById(Long id) {
 		Optional<Product> optional=productRepository.findById(id);
-		Product product;
+//		Product product;
 		if(optional.isPresent())
 			return optional.get();
 		else
